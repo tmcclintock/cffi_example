@@ -21,7 +21,7 @@ from setuptools import setup, Extension
 #Create the symlink. If this is run more than once
 #then it throws an error that can't be suppressed,
 #hence the message below.
-os.system('ln -s mycffi/include ../include')
+os.system('ln -s ../include mycffi/include')
 print("If you see 'ln: failed...' ignore it. It's OK.")
 
 #Specify the sources
