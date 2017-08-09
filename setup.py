@@ -33,7 +33,7 @@ print('headers = ',headers)
 #Create the extension.
 ext=Extension("mycffi._mycffi", sources, depends=headers, include_dirs=['include'])
 
-#Create the distributiob.
+#Create the distribution.
 dist = setup(name="mycffi",
              author="Tom McClintock",
              author_email="tmcclintock89@gmail.com",
