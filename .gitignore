@@ -1,3 +1,10 @@
+# emacs backup files
+*~
+
+# python setup stuff
+mycffi.egg-info
+build
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
