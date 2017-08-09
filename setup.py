@@ -18,6 +18,12 @@ import sys, os, glob
 import setuptools
 from setuptools import setup, Extension
 
+#Create the symlink. If this is run more than once
+#then it throws an error that can't be suppressed,
+#hence the message below.
+os.system('ln -s mycffi/include ../include')
+print("If you see 'ln: failed...' ignore it. It's OK.")
+
 #Specify the sources
 sources = glob.glob(os.path.join('src','*.c'))
 print('sources = ',sources)
