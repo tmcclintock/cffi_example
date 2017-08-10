@@ -53,7 +53,4 @@ build_lib = glob.glob(os.path.join('build','*','mycffi','_mycffi*.so'))
 if len(build_lib) >= 1:
     lib = os.path.join('mycffi','_mycffi.so')
     if os.path.lexists(lib): os.unlink(lib)
-    print("HERE")
-    print(build_lib)
-    print("THERE")
     os.link(build_lib[0], lib)
