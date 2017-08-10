@@ -18,12 +18,12 @@ import sys, os, glob
 import setuptools
 from setuptools import setup, Extension
 
-#Create the symlink. If this is run more than once
-#then it throws an error that can't be suppressed,
-#hence the message below.
-os.system('ln -s ../include mycffi/include')
-print("If you see 'ln: failed...' ignore it. It's OK.")
-
+#Create the symlink.
+try:
+    os.symlink('../include/', 'mycffi/include')
+except:
+    OSError
+    
 #Specify the sources
 sources = glob.glob(os.path.join('src','*.c'))
 print('sources = ',sources)
@@ -37,7 +37,7 @@ ext=Extension("mycffi._mycffi", sources, depends=headers, include_dirs=['include
 dist = setup(name="mycffi",
              author="Tom McClintock",
              author_email="tmcclintock89@gmail.com",
-             description="A usage example for cffi that I couldn't fine elsewhere.",
+             description="A usage example for cffi.",
              license="MIT License",
              url="https://github.com/tmcclintock/cffi_example",
              packages=['mycffi'],
@@ -53,4 +53,7 @@ build_lib = glob.glob(os.path.join('build','*','mycffi','_mycffi*.so'))
 if len(build_lib) >= 1:
     lib = os.path.join('mycffi','_mycffi.so')
     if os.path.lexists(lib): os.unlink(lib)
+    print("HERE")
+    print(build_lib)
+    print("THERE")
     os.link(build_lib[0], lib)
